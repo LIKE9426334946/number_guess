@@ -12,7 +12,7 @@ def train():
     print(f"Using device: {device}")
 
     # 超参数
-    batch_size = 64
+    batch_size = 2
     learning_rate = 1e-3
     epochs = 5
 
@@ -38,8 +38,10 @@ def train():
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     for images, labels in train_loader:
-        print(images.shape)
-        print(labels.shape)
+        print("images.shape=",images.shape)
+        print("labels.shape=",labels.shape)
+        print("images=",images)
+        print("labels=",labels)
         break
     # print("train_loader=",train_loader)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
