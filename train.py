@@ -5,7 +5,6 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from model import MNISTCNN
-from tqdm import tqdm # 进度条
 
 def train():
     # 设备
@@ -38,7 +37,9 @@ def train():
     )
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    print("train_loader=",train_loader)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    print("test_loader=",test_loader)
 
     # 模型、损失、优化器
     model = MNISTCNN().to(device)
@@ -46,7 +47,7 @@ def train():
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     # 训练
-    for epoch in tqdm(range(epochs)):
+    for epoch in range(epochs):
         model.train()
         running_loss = 0.0
         correct = 0
