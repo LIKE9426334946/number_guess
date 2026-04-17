@@ -6,7 +6,6 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from model import MNISTCNN
 
-
 def train():
     # 设备
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -38,7 +37,13 @@ def train():
     )
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    for images, labels in train_loader:
+        print(images.shape)
+        print(labels.shape)
+        break
+    # print("train_loader=",train_loader)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    # print("test_loader=",test_loader)
 
     # 模型、损失、优化器
     model = MNISTCNN().to(device)
