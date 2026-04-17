@@ -5,7 +5,7 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from model import MNISTCNN
-
+from tqdm import tqdm # 进度条
 
 def train():
     # 设备
@@ -46,7 +46,7 @@ def train():
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     # 训练
-    for epoch in range(epochs):
+    for epoch in tqdm(range(epochs)):
         model.train()
         running_loss = 0.0
         correct = 0
