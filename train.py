@@ -13,7 +13,7 @@ def train():
     print(f"Using device: {device}")
 
     # 超参数
-    batch_size = 128
+    batch_size = 256
     learning_rate = 1e-3
     epochs = 5
 
