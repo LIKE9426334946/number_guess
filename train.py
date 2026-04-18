@@ -41,7 +41,10 @@ def train():
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
     # 模型、损失、优化器
-    model = MNISTCNN().to(device)
+    model = MNISTCNN()
+    model = nn.DataParallel(model)
+    model = model.to(device)
+    
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
