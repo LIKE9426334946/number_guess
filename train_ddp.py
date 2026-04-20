@@ -39,9 +39,9 @@ def train():
         print(f"DDP started. world_size={world_size}, local_rank={local_rank}")
 
     # 这里的 batch_size 是“每张卡”的 batch size
-    batch_size = 64
+    batch_size = 256
     learning_rate = 1e-3
-    epochs = 5
+    epochs = 10
 
     transform = transforms.Compose([
         transforms.ToTensor(),
