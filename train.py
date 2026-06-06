@@ -38,15 +38,8 @@ def train():
     )
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    for images, labels in train_loader:
-        print("images.shape=",images.shape)
-        print("labels.shape=",labels.shape)
-        print("images=",images)
-        print("labels=",labels)
-        break
-    # print("train_loader=",train_loader)
+
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-    # print("test_loader=",test_loader)
 
     # 模型、损失、优化器
     model = MNISTCNN().to(device)
