@@ -68,6 +68,8 @@ def train():
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
+            set_trace()
+
         train_acc = 100.0 * correct / total
         avg_loss = running_loss / len(train_loader)
 
