@@ -46,7 +46,6 @@ def train():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-    set_trace() # debug
 
     # 训练
     for epoch in range(epochs):
