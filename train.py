@@ -5,6 +5,7 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 from model import MNISTCNN
+from IPython.core.debugger import set_trace
 
 def train():
     # 设备
@@ -52,6 +53,8 @@ def train():
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
+    set_trace() # debug
+
     # 训练
     for epoch in range(epochs):
         model.train()
@@ -87,6 +90,8 @@ def train():
                 _, predicted = torch.max(outputs, dim=1)
                 test_total += labels.size(0)
                 test_correct += (predicted == labels).sum().item()
+                
+                set_trace()
 
         test_acc = 100.0 * test_correct / test_total
 
