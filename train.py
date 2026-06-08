@@ -42,7 +42,6 @@ def train():
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     # 属于torch.utils.data.dataloader.DataLoader类，没有shape属性
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-    set_trace()
 
     # 模型、损失、优化器
     model = MNISTCNN().to(device)
@@ -58,10 +57,14 @@ def train():
 
         for images, labels in train_loader:
             images, labels = images.to(device), labels.to(device)
-            set_trace()
+            # images.shape=torch.Size([64, 1, 28, 28])
+            # labels.shape=torch.Size([64])
+
 
             optimizer.zero_grad()
             outputs = model(images)
+            # outputs.shape=torch.Size([64, 10])
+            
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
