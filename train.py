@@ -1,3 +1,5 @@
+from IPython.core.debugger import set_trace
+
 import os
 import torch
 import torch.nn as nn
@@ -16,6 +18,8 @@ def train():
     batch_size = 64
     learning_rate = 1e-3
     epochs = 5
+
+    set_trace()
 
     # 数据预处理
     transform = transforms.Compose([
