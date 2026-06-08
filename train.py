@@ -19,8 +19,6 @@ def train():
     learning_rate = 1e-3
     epochs = 5
 
-    set_trace()
-
     # 数据预处理
     transform = transforms.Compose([
         transforms.ToTensor(),
@@ -43,6 +41,7 @@ def train():
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    set_trace()
 
     # 模型、损失、优化器
     model = MNISTCNN().to(device)
