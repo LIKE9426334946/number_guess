@@ -1,3 +1,4 @@
+from IPython.core.debugger import set_trace
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -19,4 +20,5 @@ class MNISTCNN(nn.Module):
         x = torch.flatten(x, 1)                # [B, 64*7*7]
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
+        set_trace()
         return x
