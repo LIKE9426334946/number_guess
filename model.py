@@ -15,10 +15,11 @@ class MNISTCNN(nn.Module):
         self.fc2 = nn.Linear(128, 10)
 
     def forward(self, x):
+        set_trace()
         x = self.pool(F.relu(self.conv1(x)))   # [B, 32, 14, 14]
         x = self.pool(F.relu(self.conv2(x)))   # [B, 64, 7, 7]
         x = torch.flatten(x, 1)                # [B, 64*7*7]
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
-        set_trace()
+        
         return x
