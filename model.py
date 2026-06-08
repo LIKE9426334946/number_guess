@@ -14,12 +14,12 @@ class MNISTCNN(nn.Module):
         self.fc1 = nn.Linear(64 * 7 * 7, 128)
         self.fc2 = nn.Linear(128, 10)
 
-    def forward(self, x):
-        set_trace()
-        x = self.pool(F.relu(self.conv1(x)))   # [B, 32, 14, 14]
-        x = self.pool(F.relu(self.conv2(x)))   # [B, 64, 7, 7]
-        x = torch.flatten(x, 1)                # [B, 64*7*7]
-        x = F.relu(self.fc1(x))
-        x = self.fc2(x)
+    def forward(self, x): # x.shape=torch.Size([64, 1, 28, 28])
+
+        x = self.pool(F.relu(self.conv1(x)))   # x.shape=torch.Size([64, 32, 14, 14])
+        x = self.pool(F.relu(self.conv2(x)))   # x.shape=torch.Size([64, 64, 7, 7])
+        x = torch.flatten(x, 1)                # 64*7*7,x.shape=torch.Size([64, 3136])
+        x = F.relu(self.fc1(x))                # x.shape=torch.Size([64, 128])
+        x = self.fc2(x)                        # x.shape=torch.Size([64, 10])
         
         return x
