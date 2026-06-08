@@ -40,6 +40,7 @@ def train():
     )
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    # 属于torch.utils.data.dataloader.DataLoader类，没有shape属性
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
     set_trace()
 
@@ -57,6 +58,7 @@ def train():
 
         for images, labels in train_loader:
             images, labels = images.to(device), labels.to(device)
+            set_trace()
 
             optimizer.zero_grad()
             outputs = model(images)
