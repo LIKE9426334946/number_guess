@@ -1,5 +1,3 @@
-from IPython.core.debugger import set_trace
-
 import os
 import torch
 import torch.nn as nn
@@ -20,23 +18,16 @@ def train():
     epochs = 5
 
     # 数据预处理
-    transform = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,))
-    ])
+    transform = transforms.Compose(
+        [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
+    )
 
     # 数据集
     train_dataset = datasets.MNIST(
-        root="./data",
-        train=True,
-        download=True,
-        transform=transform
+        root="./data", train=True, download=True, transform=transform
     )
     test_dataset = datasets.MNIST(
-        root="./data",
-        train=False,
-        download=True,
-        transform=transform
+        root="./data", train=False, download=True, transform=transform
     )
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -60,11 +51,10 @@ def train():
             # images.shape=torch.Size([64, 1, 28, 28])
             # labels.shape=torch.Size([64])
 
-
             optimizer.zero_grad()
             outputs = model(images)
             # outputs.shape=torch.Size([64, 10])
-            
+
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
